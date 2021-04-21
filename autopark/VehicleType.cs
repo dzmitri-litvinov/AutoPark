@@ -9,7 +9,7 @@ namespace autopark
     class VehicleType
     {
         string typeName;
-        float taxCoefficient;
+        float taxCoefficient; //or float taxCoefficient { get; set; }
 
         public float TaxCoefficient
         {
@@ -39,6 +39,4 @@ namespace autopark
             taxCoefficient = n;
         }
     }
-
-    
 }
