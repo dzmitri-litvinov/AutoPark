@@ -9,34 +9,23 @@ namespace autopark
     class VehicleType
     {
         public string TypeName { get; set; }
-        float taxCoefficient; //or float taxCoefficient { get; set; }
-
-        public float TaxCoefficient
-        {
-            get { return taxCoefficient; }
-            set { taxCoefficient = value; }
-        }
+        public float TaxCoefficient { get; set; }       
 
         public VehicleType(string typeName, float taxCoefficient)
         {
-            this.typeName = typeName;
-            this.taxCoefficient = taxCoefficient;
+            this.TypeName = typeName;
+            this.TaxCoefficient = taxCoefficient;
         }
 
         public void Display()
         {
-            Console.WriteLine($"TypeName = {typeName}");
-            Console.WriteLine($"TaxCoefficient = {taxCoefficient}");
+            Console.WriteLine($"TypeName = {TypeName}");
+            Console.WriteLine($"TaxCoefficient = {TaxCoefficient}");
         }
 
         public override string ToString()
         {
-            return $"{typeName} {taxCoefficient}";
-        }
-
-        public void ChangeTaxCoef(float n)
-        {
-            taxCoefficient = n;
+            return $"{TypeName} {TaxCoefficient}";
         }
     }
 }
