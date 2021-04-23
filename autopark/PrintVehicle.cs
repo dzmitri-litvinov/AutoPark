@@ -8,12 +8,19 @@ namespace autopark
 {
     static class PrintVehicle
     {
-        public static string ToString(Vehicle obj)
+        public static string ToString(Vehicle[] obj)
         {
-            return  $"{obj.VehicleType} {obj.ModelName} " + 
-                    $"{obj.RegistrationNumber} {obj.WeightKg} " + 
-                    $"{obj.ManufactureYear} {obj.MileageKm} " + 
-                    $"{obj.Color} {obj.GetCalcTaxPerMonth().ToString("0.00")}";
+            StringBuilder strBld = new StringBuilder();
+
+            for (int i = 0; i < obj.Length; i++)
+            {
+                strBld.Append($"{obj[i].VehicleType} {obj[i].ModelName} " +
+                    $"{obj[i].RegistrationNumber} {obj[i].WeightKg} " +
+                    $"{obj[i].ManufactureYear} {obj[i].MileageKm} " +
+                    $"{obj[i].Color} {obj[i].GetCalcTaxPerMonth().ToString("0.00")}\n");
+            }
+
+            return strBld.ToString();
         }
     }
 }

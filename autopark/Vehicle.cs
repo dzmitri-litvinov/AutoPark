@@ -6,18 +6,9 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    enum Color
-    {
-        Blue = 1,
-        White,
-        Green,
-        Gray,
-        Yellow,
-        Red
-    }
     class Vehicle : IComparable<Vehicle>
     {
-        public string VehicleType { get; }
+        public VehicleType VehicleType { get; }
         public Engine Engine { get; set; }
         public string ModelName { get;  }
         public string RegistrationNumber { get;  }
@@ -25,18 +16,15 @@ namespace autopark
         public int ManufactureYear { get;  }
         public double MileageKm { get; set; }
         public Color Color { get; set; }
-        public double FuelTankLOrKW { get; set; }
-        public double TaxCoefficient { get; set; }
-
+        public double FuelTankOrBattery { get; set; }
         
-
         public Vehicle()
         {
 
         }
 
-        public Vehicle(string VehicleType, Engine Engine, string ModelName, string RegistrationNumber,
-            double WeightKg, int ManufactureYear, double MileageKm, Color Color)
+        public Vehicle(VehicleType VehicleType, Engine Engine, string ModelName, string RegistrationNumber,
+            double WeightKg, int ManufactureYear, double MileageKm, Color Color, double FuelTankOrBattery)
         {
             this.VehicleType = VehicleType;
             this.Engine = Engine;
@@ -46,35 +34,18 @@ namespace autopark
             this.ManufactureYear = ManufactureYear;
             this.MileageKm = MileageKm;
             this.Color = Color;
-            TaxCoefficient = GetTaxCoefficient(VehicleType);
+            this.FuelTankOrBattery = FuelTankOrBattery;
         }
 
-        private double GetTaxCoefficient(string VehicleType)
-        {
-            if (VehicleType == "types[0]")
-                return 1.2;
-            else if (VehicleType == "types[1]")
-                return 1;
-            else if (VehicleType == "types[2]")
-                return 1.5;
-            else if (VehicleType == "types[3]")
-                return 1.2;
-            else
-                return 0;
-        }
+        
         public double GetCalcTaxPerMonth()
         {
-            return WeightKg * 0.0013 + TaxCoefficient * Engine.EngineTaxCoefficient * 30 + 5;
+            return WeightKg * 0.0013 + VehicleType.TaxCoefficient * Engine.EngineTaxCoefficient * 30 + 5;
         }
 
         public int CompareTo(Vehicle other)
         {
-            if (GetCalcTaxPerMonth() < other.GetCalcTaxPerMonth())
-                return -1;
-            else if (GetCalcTaxPerMonth() > other.GetCalcTaxPerMonth())
-                return 1;
-            else
-                return 0;
+            return GetCalcTaxPerMonth().CompareTo(other.GetCalcTaxPerMonth());
         }
 
         public override bool Equals(object obj)
@@ -82,9 +53,16 @@ namespace autopark
             Vehicle temp = obj as Vehicle;
 
             if (temp == null)
-                return fasle;
+                return false;
 
-            return VehicleType == temp.VehicleType && ModelName == temp.ModelName;
+            return VehicleType.TypeName == temp.VehicleType.TypeName && ModelName == temp.ModelName;
+        }
+        public override string ToString()
+        {
+            return $"{VehicleType} {ModelName} " +
+                    $"{RegistrationNumber} {WeightKg} " +
+                    $"{ManufactureYear} {MileageKm} " +
+                    $"{Color} {GetCalcTaxPerMonth().ToString("0.00")}";
         }
     }
 }

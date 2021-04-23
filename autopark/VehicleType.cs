@@ -11,10 +11,10 @@ namespace autopark
         public string TypeName { get; set; }
         public float TaxCoefficient { get; set; }       
 
-        public VehicleType(string typeName, float taxCoefficient)
+        public VehicleType(string typeName)
         {
             this.TypeName = typeName;
-            this.TaxCoefficient = taxCoefficient;
+            this.TaxCoefficient = GetTaxCoefficient(typeName);
         }
 
         public void Display()
@@ -25,7 +25,23 @@ namespace autopark
 
         public override string ToString()
         {
-            return $"{TypeName} {TaxCoefficient}";
+            return $"{TypeName}";
+        }
+        private float GetTaxCoefficient(string typeName)
+        {
+            switch (typeName)
+            {
+                case "types[0]":
+                     return 1.2F;
+                case "types[1]":
+                     return 1F;
+                case "types[2]":
+                     return 1.5F;
+                case "types[3]":
+                     return 1.2F;
+                default:
+                     return 0;
+            }
         }
     }
 }
