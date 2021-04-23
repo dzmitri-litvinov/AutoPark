@@ -10,7 +10,10 @@ namespace autopark
     {
         public static string ToString(Vehicle obj)
         {
-            return $"{obj.VehicleType} {obj.ModelName} {obj.RegistrationNumber} {obj.WeightKg} {obj.ManufactureYear} {obj.MileageKm} {obj.Color} {obj.GetCalcTaxPerMonth().ToString("0.00")}";
+            return  $"{obj.VehicleType} {obj.ModelName} " + 
+                    $"{obj.RegistrationNumber} {obj.WeightKg} " + 
+                    $"{obj.ManufactureYear} {obj.MileageKm} " + 
+                    $"{obj.Color} {obj.GetCalcTaxPerMonth().ToString("0.00")}";
         }
     }
 }
