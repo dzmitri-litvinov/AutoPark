@@ -84,10 +84,7 @@ namespace autopark
             if (temp == null)
                 return fasle;
 
-            if (VehicleType == temp.VehicleType && ModelName == temp.ModelName)
-                return true;
-            else
-                return false;
+            return VehicleType == temp.VehicleType && ModelName == temp.ModelName;
         }
     }
 }
