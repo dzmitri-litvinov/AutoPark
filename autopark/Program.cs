@@ -6,33 +6,44 @@ namespace autopark
     {
         static void Main(string[] args)
         {
-            int n, i;
-            VehicleType[] vehicles = new VehicleType[]
+            int n, i, lowestMiliage = 0, highestMiliage = 0;
+            Vehicle[] vehicles = new Vehicle[]
             {
-                 new VehicleType("Bus", 1.2F),
-                 new VehicleType("Car", 1F),
-                 new VehicleType("Rink", 1.5F),
-                 new VehicleType("Tractor", 1.2F)
+                 new Vehicle("types[0]","VW Crafter", "5427 AX-7", 2022, 2015, 376000, Color.Blue),
+                 new Vehicle("types[0]","VW Crafter", "6427 AA-7", 2500, 2014, 227010, Color.White),
+                 new Vehicle("types[0]","Electric Bus E321", "6785 BA-7", 12080, 2019, 20451, Color.Green),
+                 new Vehicle("types[1]","Golf 5", "8682 AX-7", 1200, 2006, 230451, Color.Gray),
+                 new Vehicle("types[1]","Tesla Model S 70 D", "E001 AA-7", 2200, 2019, 10454, Color.White),
+                 new Vehicle("types[2]","Hamm HD 12 VV", null, 3000, 2016, 122, Color.Yellow),
+                 new Vehicle("types[2]","МТЗ Беларус-1025.4", "1145 AB-7", 1200, 2020, 109, Color.Red)
             };
-            float maxTaxCoef = 0, sumTaxCoef = 0, averTaxCoef;
 
             n = vehicles.Length;
-            for (i = 0; i < n; i++) {
-                if (i == n - 1)
-                    vehicles[i].TaxCoefficient = 1.3F;
 
-                vehicles[i].Display();
+            for (i = 0; i < n; i++)
+                Console.WriteLine(PrintVehicle.ToString(vehicles[i]));
 
-                if (vehicles[i].TaxCoefficient > maxTaxCoef)
-                    maxTaxCoef = vehicles[i].TaxCoefficient;
+            Array.Sort(vehicles);
 
-                sumTaxCoef += vehicles[i].TaxCoefficient;
+            Console.WriteLine();
+            for (i = 0; i < n; i++)
+                Console.WriteLine(PrintVehicle.ToString(vehicles[i]));
+
+            for (i = 0; i < n; i++)
+            {
+                if (vehicles[lowestMiliage].MileageKm > vehicles[i].MileageKm)
+                    lowestMiliage = i;
+
+                if (vehicles[highestMiliage].MileageKm < vehicles[i].MileageKm)
+                    highestMiliage = i;
             }
 
-            Console.WriteLine($"Max tax coefficient is {maxTaxCoef}");
+            Console.WriteLine();
+            Console.WriteLine("Vehicle with the lowest miliage:");
+            Console.WriteLine(PrintVehicle.ToString(vehicles[lowestMiliage]));
+            Console.WriteLine("Vehicle with the highest miliage:");
+            Console.WriteLine(PrintVehicle.ToString(vehicles[highestMiliage]));
 
-            averTaxCoef = sumTaxCoef / n;
-            Console.WriteLine($"Average tax coefficient is {averTaxCoef}");
         }
     }
 }
