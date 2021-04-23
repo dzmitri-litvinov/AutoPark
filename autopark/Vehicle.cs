@@ -82,7 +82,7 @@ namespace autopark
             Vehicle temp = obj as Vehicle;
 
             if (temp == null)
-                throw new Exception("Impossible object to compare...");
+                return fasle;
 
             if (VehicleType == temp.VehicleType && ModelName == temp.ModelName)
                 return true;
