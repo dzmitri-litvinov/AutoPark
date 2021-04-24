@@ -10,17 +10,15 @@ namespace autopark
     {
         public static string ToString(Vehicle[] obj)
         {
-            StringBuilder strBld = new StringBuilder();
+            int n = obj.Length;
+            string[] strArray = new string[n];
 
-            for (int i = 0; i < obj.Length; i++)
-            {
-                strBld.Append($"{obj[i].VehicleType} {obj[i].ModelName} " +
-                    $"{obj[i].RegistrationNumber} {obj[i].WeightKg} " +
-                    $"{obj[i].ManufactureYear} {obj[i].MileageKm} " +
-                    $"{obj[i].Color} {obj[i].GetCalcTaxPerMonth().ToString("0.00")}\n");
-            }
+            for (int i = 0; i < n; i++)
+                strArray[i] = obj[i].ToString();
 
-            return strBld.ToString();
+            string str = string.Join("\n", strArray);
+
+            return str;
         }
     }
 }

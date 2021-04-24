@@ -11,10 +11,10 @@ namespace autopark
         public string TypeName { get; set; }
         public float TaxCoefficient { get; set; }       
 
-        public VehicleType(string typeName)
+        public VehicleType(string typeName, float taxCoefficient)
         {
-            this.TypeName = typeName;
-            this.TaxCoefficient = GetTaxCoefficient(typeName);
+            TypeName = typeName;
+            TaxCoefficient = taxCoefficient;
         }
 
         public void Display()

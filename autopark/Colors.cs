@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    enum Color
+    public enum Color
     {
         Blue = 1,
         White,
