@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    static class PrintVehicle
+    public static class PrintVehicle
     {
         public static string ToString(Vehicle[] obj)
         {
@@ -14,7 +14,9 @@ namespace autopark
             string[] strArray = new string[n];
 
             for (int i = 0; i < n; i++)
-                strArray[i] = obj[i].ToString();
+            { 
+                strArray[i] = obj[i].ToString(); 
+            }
 
             string str = string.Join("\n", strArray);
 

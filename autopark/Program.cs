@@ -4,7 +4,7 @@ namespace autopark
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int n, i, j, lowestMiliage = 0, highestMiliage = 0;
             Vehicle[] vehicles = new Vehicle[]
@@ -31,10 +31,14 @@ namespace autopark
             for (i = 0; i < n; i++)
             {
                 if (vehicles[lowestMiliage].MileageKm > vehicles[i].MileageKm)
+                {
                     lowestMiliage = i;
+                }
 
                 if (vehicles[highestMiliage].MileageKm < vehicles[i].MileageKm)
+                {
                     highestMiliage = i;
+                }
             }
 
             Console.WriteLine();
@@ -46,7 +50,7 @@ namespace autopark
 
             Console.WriteLine("\nEqual vehicles are:");
             bool[] isToPrint = new bool[n];
-            
+
             for (i = 0; i < n - 1; i++)
             {
                 for (j = i + 1; j < n; j++)
@@ -60,8 +64,12 @@ namespace autopark
             }
 
             for (i = 0; i < n; i++)
+            {
                 if (isToPrint[i])
-                    Console.WriteLine(vehicles[i].ToString());
+                { 
+                    Console.WriteLine(vehicles[i].ToString()); 
+                }
+            }
         }
     }
 }

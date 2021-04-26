@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    class DiedelEngine : CombustionEngine
+    public class DiedelEngine : CombustionEngine
     {
         public DiedelEngine(double engineCapacity, double fuelConsumptionPer100)
             : base ("Diesel", 1.2)
