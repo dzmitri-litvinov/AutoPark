@@ -4,35 +4,72 @@ namespace autopark
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            int n, i;
-            VehicleType[] vehicles = new VehicleType[]
+            int n, i, j, lowestMiliage = 0, highestMiliage = 0;
+            Vehicle[] vehicles = new Vehicle[]
             {
-                 new VehicleType("Bus", 1.2F),
-                 new VehicleType("Car", 1F),
-                 new VehicleType("Rink", 1.5F),
-                 new VehicleType("Tractor", 1.2F)
+                 new Vehicle(new VehicleType("types[0]", 1.2F), new GasolineEngine(2, 8.1), "VW Crafter", "5427 AX-7", 2022, 2015, 376000, Color.Blue, 75),
+                 new Vehicle(new VehicleType("types[0]", 1.2F), new GasolineEngine(2, 8.5), "VW Crafter", "6427 AA-7", 2500, 2014, 227010, Color.White, 75),
+                 new Vehicle(new VehicleType("types[0]", 1.2F), new ElectricalEngine(50), "Electric Bus E321", "6785 BA-7", 12080, 2019, 20451, Color.Green, 150),
+                 new Vehicle(new VehicleType("types[1]", 1F), new DiedelEngine(1.6, 7.2), "Golf 5", "8682 AX-7", 1200, 2006, 230451, Color.Gray, 55),
+                 new Vehicle(new VehicleType("types[1]", 1F), new ElectricalEngine(25), "Tesla Model S 70 D", "E001 AA-7", 2200, 2019, 10454, Color.White, 70),
+                 new Vehicle(new VehicleType("types[2]", 1.5F), new DiedelEngine(3.2, 25), "Hamm HD 12 VV", null, 3000, 2016, 122, Color.Yellow, 20),
+                 new Vehicle(new VehicleType("types[3]", 1.2F), new DiedelEngine(4.75, 20.1), "МТЗ Беларус-1025.4", "1145 AB-7", 1200, 2020, 109, Color.Red, 135)
             };
-            float maxTaxCoef = 0, sumTaxCoef = 0, averTaxCoef;
 
             n = vehicles.Length;
-            for (i = 0; i < n; i++) {
-                if (i == n - 1)
-                    vehicles[i].TaxCoefficient = 1.3F;
 
-                vehicles[i].Display();
+            Console.WriteLine("Initial array:");
+            Console.WriteLine(PrintVehicle.ToString(vehicles));
 
-                if (vehicles[i].TaxCoefficient > maxTaxCoef)
-                    maxTaxCoef = vehicles[i].TaxCoefficient;
+            Array.Sort(vehicles);
 
-                sumTaxCoef += vehicles[i].TaxCoefficient;
+            Console.WriteLine("\nSorted array:");
+            Console.WriteLine(PrintVehicle.ToString(vehicles));
+
+            for (i = 0; i < n; i++)
+            {
+                if (vehicles[lowestMiliage].MileageKm > vehicles[i].MileageKm)
+                {
+                    lowestMiliage = i;
+                }
+
+                if (vehicles[highestMiliage].MileageKm < vehicles[i].MileageKm)
+                {
+                    highestMiliage = i;
+                }
             }
 
-            Console.WriteLine($"Max tax coefficient is {maxTaxCoef}");
+            Console.WriteLine();
+            Console.WriteLine("Vehicle with the lowest miliage:");
+            Console.WriteLine(vehicles[lowestMiliage].ToString());
+            Console.WriteLine("Vehicle with the highest miliage:");
+            Console.WriteLine(vehicles[highestMiliage].ToString());
 
-            averTaxCoef = sumTaxCoef / n;
-            Console.WriteLine($"Average tax coefficient is {averTaxCoef}");
+
+            Console.WriteLine("\nEqual vehicles are:");
+            bool[] isToPrint = new bool[n];
+
+            for (i = 0; i < n - 1; i++)
+            {
+                for (j = i + 1; j < n; j++)
+                {
+                    if (vehicles[i].Equals(vehicles[j]))
+                    {
+                        isToPrint[i] = true;
+                        isToPrint[j] = true;
+                    }
+                }
+            }
+
+            for (i = 0; i < n; i++)
+            {
+                if (isToPrint[i])
+                { 
+                    Console.WriteLine(vehicles[i].ToString()); 
+                }
+            }
         }
     }
 }
