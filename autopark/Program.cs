@@ -4,7 +4,7 @@ namespace autopark
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int n, i, j, lowestMiliage = 0, highestMiliage = 0;
             Vehicle[] vehicles = new Vehicle[]

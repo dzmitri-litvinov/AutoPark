@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    class Vehicle : IComparable<Vehicle>
+    public class Vehicle : IComparable<Vehicle>
     {
         public VehicleType VehicleType { get; }
         public AbstractEngine Engine { get; set; }

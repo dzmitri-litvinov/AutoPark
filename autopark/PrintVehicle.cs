@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    static class PrintVehicle
+    public static class PrintVehicle
     {
         public static string ToString(Vehicle[] obj)
         {

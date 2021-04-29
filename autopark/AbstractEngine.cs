@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    abstract class AbstractEngine
+    public abstract class AbstractEngine
     {
         public string EngineType { get; set; }
         public double EngineTaxCoefficient { get; set; }
