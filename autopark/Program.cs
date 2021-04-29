@@ -31,10 +31,14 @@ namespace autopark
             for (i = 0; i < n; i++)
             {
                 if (vehicles[lowestMiliage].MileageKm > vehicles[i].MileageKm)
+                {
                     lowestMiliage = i;
+                }
 
                 if (vehicles[highestMiliage].MileageKm < vehicles[i].MileageKm)
+                {
                     highestMiliage = i;
+                }
             }
 
             Console.WriteLine();
@@ -60,8 +64,12 @@ namespace autopark
             }
 
             for (i = 0; i < n; i++)
+            {
                 if (isToPrint[i])
-                    Console.WriteLine(vehicles[i].ToString());
+                { 
+                    Console.WriteLine(vehicles[i].ToString()); 
+                }
+            }
 
             Console.WriteLine("\nVehicle with the max kilometers");
             double maxKilometers = 0;
