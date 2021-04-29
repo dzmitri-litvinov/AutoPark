@@ -50,7 +50,7 @@ namespace autopark
 
             Console.WriteLine("\nEqual vehicles are:");
             bool[] isToPrint = new bool[n];
-
+            
             for (i = 0; i < n - 1; i++)
             {
                 for (j = i + 1; j < n; j++)
@@ -70,6 +70,20 @@ namespace autopark
                     Console.WriteLine(vehicles[i].ToString()); 
                 }
             }
+
+            Console.WriteLine("\nVehicle with the max kilometers");
+            double maxKilometers = 0;
+            int vehicleWithMaxKolometers = 0;
+            for (i = 0; i < n; i++)
+            {
+                if (vehicles[i].Engine.GetMaxKilometers(vehicles[i].FuelTankOrBattery) > maxKilometers)
+                {
+                    maxKilometers = vehicles[i].Engine.GetMaxKilometers(vehicles[i].FuelTankOrBattery);
+                    vehicleWithMaxKolometers = i;
+                }
+            }
+
+            Console.WriteLine(vehicles[vehicleWithMaxKolometers]);
         }
     }
 }
