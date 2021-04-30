@@ -90,7 +90,9 @@ namespace autopark
             ///Level 05///
             ////////////*/
 
-            Collections coll = new Collections(@"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\types.csv", @"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\vehicles.csv");
+            Collections coll = new Collections(@"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\types.csv",
+                @"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\vehicles.csv",
+                @"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\rents.csv");
 
             foreach (var v in coll.Vehicle)
             {

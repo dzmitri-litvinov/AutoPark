@@ -10,7 +10,7 @@ namespace autopark
     {
         private const double TaxWeightCoeff = 0.0013;
         public int Id { get; set; }
-        public List<Rent> Rents { get; set; }
+        public List<Rent> Rents { get; set; } = new();
         public VehicleType VehicleType { get; set; }
         public AbstractEngine Engine { get; set; }
         public string ModelName { get; set; }
