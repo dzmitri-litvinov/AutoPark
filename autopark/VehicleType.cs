@@ -18,6 +18,11 @@ namespace autopark
             TaxCoefficient = taxCoefficient;
         }
 
+        public VehicleType()
+        {
+
+        }
+
         public void Display()
         {
             Console.WriteLine($"TypeName = {TypeName}");

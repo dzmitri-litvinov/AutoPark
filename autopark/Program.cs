@@ -6,6 +6,7 @@ namespace autopark
     {
         public static void Main(string[] args)
         {
+
             int n, i, j, lowestMiliage = 0, highestMiliage = 0;
             Vehicle[] vehicles = new Vehicle[]
             {
@@ -50,7 +51,7 @@ namespace autopark
 
             Console.WriteLine("\nEqual vehicles are:");
             bool[] isToPrint = new bool[n];
-            
+
             for (i = 0; i < n - 1; i++)
             {
                 for (j = i + 1; j < n; j++)
@@ -66,8 +67,8 @@ namespace autopark
             for (i = 0; i < n; i++)
             {
                 if (isToPrint[i])
-                { 
-                    Console.WriteLine(vehicles[i].ToString()); 
+                {
+                    Console.WriteLine(vehicles[i].ToString());
                 }
             }
 
@@ -84,6 +85,20 @@ namespace autopark
             }
 
             Console.WriteLine(vehicles[vehicleWithMaxKolometers]);
+
+            /*////////////
+            ///Level 05///
+            ////////////*/
+
+            Collections coll = new Collections(@"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\types.csv", @"D:\DevInc\autopark\GitHub\AutoPark\autopark\Data\vehicles.csv");
+
+            foreach (var v in coll.Vehicle)
+            {
+                Console.WriteLine(v);
+            }
+
+            
         }
     }
 }
+

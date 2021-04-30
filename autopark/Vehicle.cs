@@ -11,12 +11,12 @@ namespace autopark
         private const double TaxWeightCoeff = 0.0013;
         public int Id { get; set; }
         public List<Rent> Rents { get; set; }
-        public VehicleType VehicleType { get; }
+        public VehicleType VehicleType { get; set; }
         public AbstractEngine Engine { get; set; }
-        public string ModelName { get;  }
-        public string RegistrationNumber { get;  }
-        public double WeightKg { get;  }
-        public int ManufactureYear { get;  }
+        public string ModelName { get; set; }
+        public string RegistrationNumber { get; set; }
+        public double WeightKg { get; set; }
+        public int ManufactureYear { get; set; }
         public double MileageKm { get; set; }
         public Color Color { get; set; }
         public double FuelTankOrBattery { get; set; }
