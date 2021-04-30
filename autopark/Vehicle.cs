@@ -9,7 +9,7 @@ namespace autopark
     public class Vehicle : IComparable<Vehicle>
     {
         public VehicleType VehicleType { get; }
-        public Engine Engine { get; set; }
+        public AbstractEngine Engine { get; set; }
         public string ModelName { get;  }
         public string RegistrationNumber { get;  }
         public double WeightKg { get;  }
@@ -23,7 +23,7 @@ namespace autopark
 
         }
 
-        public Vehicle(VehicleType VehicleType, Engine Engine, string ModelName, string RegistrationNumber,
+        public Vehicle(VehicleType VehicleType, AbstractEngine Engine, string ModelName, string RegistrationNumber,
             double WeightKg, int ManufactureYear, double MileageKm, Color Color, double FuelTankOrBattery)
         {
             this.VehicleType = VehicleType;
