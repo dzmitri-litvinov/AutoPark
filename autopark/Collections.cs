@@ -138,5 +138,71 @@ namespace autopark
                 Console.WriteLine("File does not exist...");
             }
         }
+
+        public void Insert(int index, Vehicle v)
+        {
+            if (index > Vehicle.Count)
+            {
+                Vehicle.Add(v);
+            }
+            else 
+            {
+                Vehicle.Insert(index, v);
+            }
+        }
+
+        public int Delete(int index)
+        {
+            if (index > Vehicle.Count)
+            {
+                return -1;
+            }
+            else 
+            {
+                Vehicle.RemoveAt(index);
+                return index;
+            }
+        }
+
+        public double SumTotalProfit()
+        {
+            double sum = 0;
+
+            foreach (Vehicle v in Vehicle)
+            {
+                sum += v.GetTotalProfit();
+            }
+
+            return sum;
+        }
+
+        public void Print()
+        {
+            Console.WriteLine("{0,-5}{1,-10}{2,-25}{3,-15}{4,-15}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}{10,-10}",
+                " Id", " Type", " ModelName", " Number", " Weight (kg)", " Year", " Mileage", " Color", " Income", " Tax", " Profit");
+
+            foreach (Vehicle v in Vehicle)
+            {
+                Console.WriteLine("{0,-5}{1,-10}{2,-25}{3,-15}{4,-15}{5,-10}{6,-10}{7,-10}{8,-10}{9,-10}{10,-10}",
+                    v.Id,
+                    v.VehicleType.TypeName,
+                    v.ModelName,
+                    v.RegistrationNumber,
+                    v.WeightKg,
+                    v.ManufactureYear,
+                    v.MileageKm,
+                    v.Color,
+                    v.GetTotalIncome().ToString("0.00"),
+                    v.GetCalcTaxPerMonth().ToString("0.00"),
+                    v.GetTotalProfit().ToString("0.00"));
+            }
+
+            Console.WriteLine($"{"Total",-5}{"",-10}{"",-25}{"",-15}{"",-15}{"",-10}{"",-10}{"",-10}{"",-10}{"",-10}{SumTotalProfit().ToString("0.00"),-10}");
+        }
+
+        public void Sort(IComparer<Vehicle> comparator)
+        {
+            Vehicle.Sort(comparator);
+        }
     }
 }

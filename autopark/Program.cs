@@ -6,7 +6,8 @@ namespace autopark
     {
         public static void Main(string[] args)
         {
-
+            int scrWidth = 140;
+            Console.WindowWidth = scrWidth;
             int n, i, j, lowestMiliage = 0, highestMiliage = 0;
             Vehicle[] vehicles = new Vehicle[]
             {
@@ -86,20 +87,30 @@ namespace autopark
 
             Console.WriteLine(vehicles[vehicleWithMaxKolometers]);
 
-            /*////////////
-            ///Level 05///
-            ////////////*/
+            Console.WriteLine("////////////\n" +
+                              "//Level 05//\n" +
+                              "////////////");
 
-            Collections coll = new Collections(@"types.csv", 
-                @"vehicles.csv",
-                @"rents.csv");
+            Collections VehiclesCollection = new Collections(@"types.csv", @"vehicles.csv", @"rents.csv");
 
-            foreach (var v in coll.Vehicle)
-            {
-                Console.WriteLine(v);
-            }
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
 
-            
+            Vehicle zaz = new Vehicle(new VehicleType("Car", 1.2F), new GasolineEngine(2, 8.5), "ZAZ-8", "1234 AA-7", 1100, 1978, 125000, Color.White, 60);
+            zaz.Id = VehiclesCollection.Vehicle.Count + 1;
+
+            VehiclesCollection.Insert(VehiclesCollection.Vehicle.Count, zaz);
+
+            VehiclesCollection.Delete(1);
+            VehiclesCollection.Delete(4);
+
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
+
+            VehiclesCollection.Sort(new VehicleNameComparer());
+
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
         }
     }
 }
