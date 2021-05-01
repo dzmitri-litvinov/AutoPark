@@ -6,6 +6,8 @@ namespace autopark
     {
         public static void Main(string[] args)
         {
+            int scrWidth = 140;
+            Console.WindowWidth = scrWidth;
             int n, i, j, lowestMiliage = 0, highestMiliage = 0;
             Vehicle[] vehicles = new Vehicle[]
             {
@@ -50,7 +52,7 @@ namespace autopark
 
             Console.WriteLine("\nEqual vehicles are:");
             bool[] isToPrint = new bool[n];
-            
+
             for (i = 0; i < n - 1; i++)
             {
                 for (j = i + 1; j < n; j++)
@@ -66,8 +68,8 @@ namespace autopark
             for (i = 0; i < n; i++)
             {
                 if (isToPrint[i])
-                { 
-                    Console.WriteLine(vehicles[i].ToString()); 
+                {
+                    Console.WriteLine(vehicles[i].ToString());
                 }
             }
 
@@ -84,6 +86,32 @@ namespace autopark
             }
 
             Console.WriteLine(vehicles[vehicleWithMaxKolometers]);
+
+            Console.WriteLine("////////////\n" +
+                              "//Level 05//\n" +
+                              "////////////");
+
+            Collections VehiclesCollection = new Collections(@"types.csv", @"vehicles.csv", @"rents.csv");
+
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
+
+            Vehicle zaz = new Vehicle(new VehicleType("Car", 1.2F), new GasolineEngine(2, 8.5), "ZAZ-8", "1234 AA-7", 1100, 1978, 125000, Color.White, 60);
+            zaz.Id = VehiclesCollection.Vehicle.Count + 1;
+
+            VehiclesCollection.Insert(VehiclesCollection.Vehicle.Count, zaz);
+
+            VehiclesCollection.Delete(1);
+            VehiclesCollection.Delete(4);
+
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
+
+            VehiclesCollection.Sort(new VehicleNameComparer());
+
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            VehiclesCollection.Print();
         }
     }
 }
+

@@ -8,6 +8,7 @@ namespace autopark
 {
     public class VehicleType
     {
+        public int Id { get; set; }
         public string TypeName { get; set; }
         public float TaxCoefficient { get; set; }       
 
@@ -15,6 +16,11 @@ namespace autopark
         {
             TypeName = typeName;
             TaxCoefficient = taxCoefficient;
+        }
+
+        public VehicleType()
+        {
+
         }
 
         public void Display()

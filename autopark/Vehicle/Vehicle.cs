@@ -8,12 +8,15 @@ namespace autopark
 {
     public class Vehicle : IComparable<Vehicle>
     {
+        private const double TaxWeightCoeff = 0.0013;
+        public int Id { get; set; }
+        public List<Rent> Rents { get; set; } = new();
         public VehicleType VehicleType { get; }
         public AbstractEngine Engine { get; set; }
-        public string ModelName { get;  }
-        public string RegistrationNumber { get;  }
+        public string ModelName { get; }
+        public string RegistrationNumber { get; }
         public double WeightKg { get;  }
-        public int ManufactureYear { get;  }
+        public int ManufactureYear { get; }
         public double MileageKm { get; set; }
         public Color Color { get; set; }
         public double FuelTankOrBattery { get; set; }
@@ -36,11 +39,20 @@ namespace autopark
             this.Color = Color;
             this.FuelTankOrBattery = FuelTankOrBattery;
         }
-
         
         public double GetCalcTaxPerMonth()
         {
-            return WeightKg * 0.0013 + VehicleType.TaxCoefficient * Engine.EngineTaxCoefficient * 30 + 5;
+            return WeightKg * TaxWeightCoeff + VehicleType.TaxCoefficient * Engine.EngineTaxCoefficient * 30 + 5;
+        }
+
+        public double GetTotalIncome()
+        {
+            return Rents.Sum(rent => rent.RentPrice);
+        }
+
+        public double GetTotalProfit()
+        {
+            return GetTotalIncome() - GetCalcTaxPerMonth();
         }
 
         public int CompareTo(Vehicle other)
