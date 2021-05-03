@@ -133,6 +133,24 @@ namespace autopark
             {
                 Console.WriteLine("Washed vehicle is: {0}", VehicleQueue.Dequeue());
             }
+
+            Console.WriteLine("////////////\n" +
+                              "//Level 07//\n" +
+                              "////////////");
+
+            Stack VehicleStack = new Stack();
+
+            foreach (Vehicle v in VehiclesCollection.Vehicle)
+            {
+                Console.WriteLine("Vehicle entered the garage: {0}", v);
+                VehicleStack.Push(v);
+            }
+
+            Console.WriteLine();
+            while (VehicleStack.Count() > 0)
+            {
+                Console.WriteLine("Vehicle leaved the garage: {0}", VehicleStack.Pop());
+            }
         }
     }
 }
