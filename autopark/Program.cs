@@ -91,10 +91,15 @@ namespace autopark
                               "//Level 05//\n" +
                               "////////////");
 
+            Console.WriteLine(new string('*', scrWidth) + '\n');
+            Console.WriteLine("Initial collection from file:");
+
             Collections VehiclesCollection = new Collections(@"types.csv", @"vehicles.csv", @"rents.csv");
+                        
+            VehiclesCollection.Print();
 
             Console.WriteLine(new string('*', scrWidth) + '\n');
-            VehiclesCollection.Print();
+            Console.WriteLine("Add one vehicle and delete 1st and 4th one by one:");
 
             Vehicle zaz = new Vehicle(new VehicleType("Car", 1.2F), new GasolineEngine(2, 8.5), "ZAZ-8", "1234 AA-7", 1100, 1978, 125000, Color.White, 60);
             zaz.Id = VehiclesCollection.Vehicle.Count + 1;
@@ -103,14 +108,31 @@ namespace autopark
 
             VehiclesCollection.Delete(1);
             VehiclesCollection.Delete(4);
+           
+            VehiclesCollection.Print();
 
             Console.WriteLine(new string('*', scrWidth) + '\n');
-            VehiclesCollection.Print();
+            Console.WriteLine("Sort collection:");
 
             VehiclesCollection.Sort(new VehicleNameComparer());
-
-            Console.WriteLine(new string('*', scrWidth) + '\n');
+                        
             VehiclesCollection.Print();
+
+            Console.WriteLine("////////////\n" +
+                              "//Level 06//\n" +
+                              "////////////");
+
+            Queue VehicleQueue = new Queue();
+
+            foreach (Vehicle v in VehiclesCollection.Vehicle)
+            {
+                VehicleQueue.Enqueue(v);
+            }
+
+            while (VehicleQueue.Count() > 0)
+            {
+                Console.WriteLine("Washed vehicle is: {0}", VehicleQueue.Dequeue());
+            }
         }
     }
 }
