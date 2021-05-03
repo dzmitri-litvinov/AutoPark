@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    class VehicleNameComparer : IComparer<Vehicle>
+    public class VehicleNameComparer : IComparer<Vehicle>
     {
         public int Compare(Vehicle x, Vehicle y)
         {

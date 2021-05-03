@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace autopark
 {
-    class Stack
+    public class Queue
     {
         public Vehicle[] Vehicles { get; set; }
 
-        public Stack()
+        public Queue()
         {
             Vehicles = new Vehicle[0];
         }
 
-        public void Push(Vehicle vehicle)
+        public void Enqueue(Vehicle vehicle)
         {
             Vehicle[] newVehicles = new Vehicle[Vehicles.Length + 1];
 
@@ -27,15 +27,15 @@ namespace autopark
             Vehicles = newVehicles;
         }
 
-        public Vehicle Pop()
+        public Vehicle Dequeue()
         {
             Vehicle[] newVehicles = new Vehicle[Vehicles.Length - 1];
 
-            for (int i = 0; i < Vehicles.Length - 1; i++)
+            for (int i = 1; i < Vehicles.Length; i++)
             {
-                newVehicles[i] = Vehicles[i];
+                newVehicles[i - 1] = Vehicles[i];
             }
-            Vehicle vehicle = Vehicles[Vehicles.Length - 1];
+            Vehicle vehicle = Vehicles[0];
             Vehicles = newVehicles;
 
             return vehicle;

@@ -15,6 +15,9 @@
     <None Update="Data\vehicles.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="orders.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="rents.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

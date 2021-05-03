@@ -140,6 +140,7 @@ namespace autopark
 
             Stack VehicleStack = new Stack();
 
+            Console.WriteLine("Input stack:");
             foreach (Vehicle v in VehiclesCollection.Vehicle)
             {
                 Console.WriteLine("Vehicle entered the garage: {0}", v);
@@ -147,10 +148,20 @@ namespace autopark
             }
 
             Console.WriteLine();
+            Console.WriteLine("Output stack:");
             while (VehicleStack.Count() > 0)
             {
                 Console.WriteLine("Vehicle leaved the garage: {0}", VehicleStack.Pop());
             }
+
+            Console.WriteLine("////////////\n" +
+                              "//Level 08//\n" +
+                              "////////////");
+
+            SparePartsDictionary spareParts = new SparePartsDictionary("orders.csv");
+
+            Console.WriteLine("Spare parts required:");
+            spareParts.PrintDictionary();
         }
     }
 }
