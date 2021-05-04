@@ -86,19 +86,16 @@ namespace autopark
             }
 
             Console.WriteLine(vehicles[vehicleWithMaxKolometers]);
-
-            Console.WriteLine("////////////\n" +
-                              "//Level 05//\n" +
-                              "////////////");
-
-            Console.WriteLine(new string('*', scrWidth) + '\n');
+            
+            SupportMethods.PrintNewLevel(5);
+            SupportMethods.PrintScreenLine(scrWidth);
             Console.WriteLine("Initial collection from file:");
 
             Collections VehiclesCollection = new Collections(@"types.csv", @"vehicles.csv", @"rents.csv");
                         
             VehiclesCollection.Print();
 
-            Console.WriteLine(new string('*', scrWidth) + '\n');
+            SupportMethods.PrintScreenLine(scrWidth);
             Console.WriteLine("Add one vehicle and delete 1st and 4th one by one:");
 
             Vehicle zaz = new Vehicle(new VehicleType("Car", 1.2F), new GasolineEngine(2, 8.5), "ZAZ-8", "1234 AA-7", 1100, 1978, 125000, Color.White, 60);
@@ -111,16 +108,14 @@ namespace autopark
            
             VehiclesCollection.Print();
 
-            Console.WriteLine(new string('*', scrWidth) + '\n');
+            SupportMethods.PrintScreenLine(scrWidth);
             Console.WriteLine("Sort collection:");
 
             VehiclesCollection.Sort(new VehicleNameComparer());
                         
             VehiclesCollection.Print();
 
-            Console.WriteLine("////////////\n" +
-                              "//Level 06//\n" +
-                              "////////////");
+            SupportMethods.PrintNewLevel(6);
 
             Queue VehicleQueue = new Queue();
 
@@ -134,9 +129,7 @@ namespace autopark
                 Console.WriteLine("Washed vehicle is: {0}", VehicleQueue.Dequeue());
             }
 
-            Console.WriteLine("////////////\n" +
-                              "//Level 07//\n" +
-                              "////////////");
+            SupportMethods.PrintNewLevel(7);
 
             Stack VehicleStack = new Stack();
 
@@ -154,9 +147,7 @@ namespace autopark
                 Console.WriteLine("Vehicle leaved the garage: {0}", VehicleStack.Pop());
             }
 
-            Console.WriteLine("////////////\n" +
-                              "//Level 08//\n" +
-                              "////////////");
+            SupportMethods.PrintNewLevel(8);
 
             SparePartsDictionary spareParts = new SparePartsDictionary("orders.csv");
 
