@@ -10,16 +10,9 @@ namespace autopark
     public class SparePartsDictionary
     {
         public Dictionary<string, int> SparePartsDict { get; set; } = new();
-        private string[] SparePartsNames { get; set; }
-
+       
         public SparePartsDictionary()
         { }
-
-        /*public SparePartsDictionary(string inFile)
-        {
-            SparePartsNames = LoadSpareParts(inFile).ToArray();
-            CreateDictionary();
-        }*/
 
         public SparePartsDictionary(string inFile)
         {
@@ -42,24 +35,6 @@ namespace autopark
             else
             {
                 Console.WriteLine("File does not exist...");
-            }
-        }
-
-        private void CreateDictionary()
-        {
-            int i;
-
-            foreach (string part in SparePartsNames)
-            {
-                if (SparePartsDict.TryGetValue(part, out i))
-                {
-                    SparePartsDict.Remove(part);
-                    SparePartsDict.Add(part, i + 1);
-                }
-                else
-                {
-                    SparePartsDict.Add(part, 1);
-                }
             }
         }
 
