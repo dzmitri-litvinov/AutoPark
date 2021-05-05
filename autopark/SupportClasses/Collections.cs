@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace autopark
 {
-    class Collections
+    public class Collections
     {
         public List<VehicleType> VehicleTypes { get; set; } = new();
         public List<Vehicle> Vehicle { get; set; } = new();
